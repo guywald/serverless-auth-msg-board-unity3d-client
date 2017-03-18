@@ -33,3 +33,9 @@ sysinfo.txt
 *.apk
 *.unitypackage
 
+/Assets/AWSSDK/
+/Assets/Plugins/
+/Assets/TextMesh\ Pro/
+/Assets/AWSSDK.meta
+/Assets/Plugins.meta
+/Assets/TextMesh Pro.meta
