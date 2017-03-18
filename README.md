@@ -25,3 +25,14 @@ Work In Progress:
 
 Currently only the POST method of creating a message works. The REST of the examples (pun intended) will be available soon.
 
+### Instructions
+1. After setting up the Api Gateway, copy the Api Gateway base path (with out the endpoints path)
+2. Paste it in the Api Gateway input field
+3. Enter the Api Gateway region in the input field right next to it.
+4. Enter the Facebook App Id in the Facebook input field
+5. Fill in the Cognito pool id and region in the cognito input fields
+6. Write a message and press Create.
+
+Note: Other functions are not yet implemented - work in progress.
+
+
