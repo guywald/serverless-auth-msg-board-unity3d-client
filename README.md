@@ -17,7 +17,7 @@ The signature process is based on [Examples of Signature Calculations Using C# (
 
 ##### Additional libraries and assets needed:
 
- * [AWS Mobile SDK for Unity](http://docs.aws.amazon.com/mobile/sdkforunity/developerguide/) - Install the Cognito Identity  Package
+ * [AWS Mobile SDK for Unity](http://docs.aws.amazon.com/mobile/sdkforunity/developerguide/) - Install the Cognito Identity (AWSSDK.IdentityManagement.X.X.X.X.unitypackage) Package (I used v3.3.2.3)
  * [Facebook SDK for Unity](https://developers.facebook.com/docs/unity/)
  * [Text Mesh Pro](https://www.assetstore.unity3d.com/en/#!/content/84126) (Free) - For displaying a log
 
