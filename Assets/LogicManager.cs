@@ -123,6 +123,7 @@ namespace com.guywald.examples.unity.awsv4signer
 			headers.Add ("Authorization", authorization);
 			var payloadBytes = Encoding.UTF8.GetBytes (bodyJson);
 
+			headers.Remove("Host");
 			WWW www = new WWW (uri.AbsoluteUri, payloadBytes, headers);
 
 			Send(www,(resp=>{
@@ -287,6 +288,7 @@ namespace com.guywald.examples.unity.awsv4signer
 		void CognitoInit ()
 		{
 			UnityInitializer.AttachToGameObject (this.gameObject);
+			Amazon.AWSConfigs.HttpClient = AWSConfigs.HttpClientOption.UnityWebRequest;
 			// Initialize the Amazon Cognito credentials provider
 			credentials = new CognitoAWSCredentials (
 				CognitoPoolIdInputField.text, // Identity Pool ID
