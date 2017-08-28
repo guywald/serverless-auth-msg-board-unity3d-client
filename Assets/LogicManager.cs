@@ -138,7 +138,50 @@ namespace com.guywald.examples.unity.awsv4signer
 
 		private void DoRetrieve (string awsKey, string awsSecret, string awsToken, string messageId)
 		{
-			throw new System.NotImplementedException ("Implement this");
+			var retrievePath = "message";
+			var uri = new Uri(string.Format("https://{0}/{1}", BuildPath(retrievePath),messageId));
+			var bodyJson = "";
+
+			// Empty hash
+			var contentHash = AWS4SignerBase.EMPTY_BODY_SHA256;
+			var contentHashString = contentHash;
+
+			var headers = new Dictionary<string,string> { 
+				{ AWS4SignerBase.X_Amz_Content_SHA256, contentHashString },
+				{ "content-length", bodyJson.Length.ToString() },
+				{ "content-type", "application/json" },
+				{ AWS4SignerBase.X_Amz_Security_Token, awsToken }
+			};
+
+			var signer = new AWS4SignerForQueryParameterAuth {
+				EndpointUri = uri,
+				HttpMethod = "GET",
+				Service = "execute-api",
+				Region = ApiGatewayRegionField.text
+			};
+
+			var authorization = signer.ComputeSignature (
+				headers,
+				string.Empty,
+				contentHashString,
+				awsKey,
+				awsSecret);
+			
+			headers.Add ("Authorization", authorization);
+			var payloadBytes = Encoding.UTF8.GetBytes (bodyJson);
+
+			headers.Remove("Host");
+			WWW www = new WWW (uri.AbsoluteUri, null, headers);
+
+			Send(www,(resp=>{
+				if (string.IsNullOrEmpty(www.error)) {
+					Log(www.text);
+				} else {
+					Log("Error: "+www.error);
+				}
+			}));
+
+
 		}
 
 		private void DoUpdate (string awsKey, string awsSecret, string awsToken, string messageId, string messageInput)
