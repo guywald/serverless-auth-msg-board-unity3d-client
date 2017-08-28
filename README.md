@@ -23,7 +23,7 @@ The signature process is based on [Examples of Signature Calculations Using C# (
 
 Work In Progress:
 
-Currently only the POST method of creating a message works. The REST of the examples (pun intended) will be available soon.
+Currently only the signed (SigV4) POST and GET (with query params)  methods works. The REST of the examples (pun intended) will be available soon.
 
 ### Instructions
 1. After setting up the Api Gateway, copy the Api Gateway base path (with out the endpoints path)
